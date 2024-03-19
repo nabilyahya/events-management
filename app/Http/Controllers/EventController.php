@@ -14,10 +14,11 @@ class EventController extends Controller
         $events = Event::all();
         return view('events.index', compact('events'));
     }
+
     public function create()
     {
-        $events = Event::all(); // Fetch all events
-        return view('events.create', compact('events')); // Pass events to view
+        $events = Event::all(); 
+        return view('events.create', compact('events')); 
     }
     
 
@@ -39,18 +40,19 @@ class EventController extends Controller
     
         return redirect()->route('events.create');
     }
+
     public function showFormWithEvents()
-{
-    $events = Event::all(); // Assuming you have an Event model
-    return view('events.create', compact('events'));
-}
+    {
+        $events = Event::all(); 
+        return view('events.create', compact('events'));
+    }
 
     public function destroy($id)
     {
         $event = Event::findOrFail($id);
         $event->delete();
 
-        return redirect()->route('events/create')->with('success', 'Event deleted successfully');
+        return redirect()->route('events.create')->with('success', 'Event deleted successfully');
     }
 
         public function show($id)

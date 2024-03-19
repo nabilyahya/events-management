@@ -42,7 +42,9 @@
 </div>
 <div class="mt-8 px-4 bg-white shadow-md rounded-lg">
     <h3 class="text-xl font-semibold leading-tight py-4">Event List</h3>
-    <div class="overflow-x-auto">
+
+    <!-- Table: Visible on md screens and up -->
+    <div class="overflow-x-auto hidden md:block">
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
@@ -71,6 +73,29 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+
+    <!-- Cards: Visible on smaller screens -->
+    <div class="md:hidden">
+        @foreach($events as $event)
+        <div class="p-4 mb-4 bg-gray-50 rounded-lg">
+            <h4 class="text-lg font-semibold">{{ $event->name }}</h4>
+            <p>{{ $event->description }}</p>
+            <div class="mt-2 text-sm">
+                <span class="font-medium">Start Time:</span> {{ $event->start_time }}
+            </div>
+            <div class="text-sm">
+                <span class="font-medium">End Time:</span> {{ $event->end_time }}
+            </div>
+            <div class="mt-3 flex justify-end">
+                <form action="{{ route('events.destroy', $event->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
+                </form>
+            </div>
+        </div>
+        @endforeach
     </div>
 </div>
 </div>

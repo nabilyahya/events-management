@@ -61,17 +61,32 @@
 
 <div class="flex justify-center" style="margin-top:50px ">
     <div class="container mx-auto" style="width:70%; background-color:rgb(255, 255, 255); border-radius:15px; padding:20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);">
-    <h2 class="text-center mb-4" style="margin-top:40px;margin-bottom:40px ;font-size:2rem">Weekly Calendar View</h2>
+        <div class="flex justify-end">
+            <a href="/events/create" style="background-color:rgb(46, 122, 235) ;color:white;padding-left:40px;padding-right:40px;border-radius:4px";>Add +</a>
+        </div>
+    <h2 class="text-center mb-4" style="margin-top:40px;margin-bottom:40px ;font-size:1.5rem;background-color:rgb(201, 201, 201);border-radius:8px">Weekly Calendar View</h2>
     <div class="row ">
         @for ($date = $startOfWeek; $date->lte($endOfWeek); $date->addDay())
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card">
-                    <div class="card-header text-center">{{ $date->format('l') }}</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $date->toFormattedDateString() }}</h5>
-                        @foreach ($events as $event)
+                    <div class="card-header text-between" style="background-color:rgb(201, 201, 201);padding-left:10px;padding-top:10px">
+                        {{ $date->format('l') }}
+                    </div>
+                    <div class="card-body" style="background-color:rgb(201, 201, 201) ;margin-bottom:20px;">
+                        <h5 class="card-title" style="margin-bottom:20px ;padding-left:15px">{{ $date->toFormattedDateString() }}</h5>
+                            @foreach ($events as $event)
                             @if ($date->isSameDay($event->start_time))
-                                <p class="card-text">{{ $event->name }}</p>
+                                <div class="card-text " style="background-color:rgb(122, 122, 122) ;border-radius:1px;padding-left:20px;color:white">
+                               
+                                       Name: <span > {{ $event->name }}</span>  
+                                        
+                               
+                                </div>
+                                <div class="card-text " style="background-color:rgb(122, 122, 122) ;border-radius:1px;padding-left:20px;color:white">
+                                     Description:
+                                      <br></br>
+                                        <span >    {{ $event->description }}</span>  
+                                </div>
                             @endif
                         @endforeach
                     </div>

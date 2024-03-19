@@ -101,6 +101,9 @@
                             <x-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('events.create') }}">
+                                {{ __('Events') }}
+                            </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -141,6 +144,11 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="{{ route('events.create') }}" :active="request()->routeIs('events.create')">
+                {{ __('Events') }}
             </x-responsive-nav-link>
         </div>
 
