@@ -60,10 +60,7 @@
 </div>
 
 <div class="flex justify-center" style="margin-top:50px ">
-    
     <div class="container mx-auto" style="width:70%; background-color:rgb(255, 255, 255); border-radius:15px; padding:20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);">
-
-    
     <h2 class="text-center mb-4" style="margin-top:40px;margin-bottom:40px ;font-size:2rem">Weekly Calendar View</h2>
     <div class="row ">
         @for ($date = $startOfWeek; $date->lte($endOfWeek); $date->addDay())
@@ -82,7 +79,8 @@
             </div>
         @endfor
     </div>
-</div>
+ </div>
+
 </div>
 </body>
 </html>
